@@ -8,16 +8,6 @@ ssh-keygen -t rsa -b 4096 -C $email
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
-# Dropbox
-curl -O "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-~/.dropbox-dist/dropboxd
-sudo apt install python
-sudo wget -O /usr/local/bin/dropbox "https://www.dropbox.com/download?dl=packages/dropbox.py"
-sudo chmod +x /usr/local/bin/dropbox
-sudo systemctl daemon-reload
-sudo systemctl enable dropbox
-sudo systemctl start dropbox
-
 git clone https://github.com/luk-pio/dotfs.git
 cd dotfs
 
