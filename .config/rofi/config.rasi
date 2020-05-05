@@ -1,0 +1,7 @@
+configuration {
+	font: "Hack 8";
+	terminal: "urxvt";
+	fullscreen: false;
+	dpi: 192;
+	theme: "gruvbox-dark-hard";
+}
