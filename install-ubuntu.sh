@@ -2,7 +2,7 @@
 email="l.piotrak@samsung.com"
 
 sudo apt install -y git curl
-git config git config --global user.name "luk-pio"
+git config --global user.name "luk-pio"
 git config --global user.email $email
 ssh-keygen -t rsa -b 4096 -C $email
 eval "$(ssh-agent -s)"
