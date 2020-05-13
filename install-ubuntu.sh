@@ -19,8 +19,8 @@ sudo apt install -y emacs
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 git --git-dir=$HOME/.emacs.d/.git checkout develop
 ln -s .spacemacs $HOME/.spacemacs
-mkdir -p $HOME/emacs.d/private/org-roam/
-ln -s ./.emacs.d/private/org-roam/packages.el $HOME/.emacs.d/private/org-roam/packages.el
+mkdir -p $HOME/.emacs.d/private/org-roam/
+ln -s .emacs.d/private/org-roam/packages.el $HOME/.emacs.d/private/org-roam/packages.el
 mkdir -p $HOME/.config/systemd/user/
 cp emacs.service $HOME/.config/systemd/user/emacs.service
 systemctl enable --user emacs
@@ -28,6 +28,7 @@ systemctl start --user emacs
 #
 ## vim
 sudo apt install -y vim
+mkdir -p $HOME/.vim
 ln -s .vimrc $HOME/.vimrc
 ln -s .vim/plugins.vim $HOME/.vim/plugins.vim
 #
