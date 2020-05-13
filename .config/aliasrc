@@ -1,25 +1,17 @@
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias r=ranger
-alias S="yay -S" 
-alias config='/usr/bin/git --git-dir=/home/l/.cfg/ --work-tree=/home/l'
-alias homeserver='ssh 192.168.0.22'
-alias qutebrowser='QT_AUTO_SCREEN_SCALE_FACTOR=1 qutebrowser'
 alias aliasrc='vim $HOME/.config/aliasrc'
 alias vimrc='vim $HOME/.vimrc'
 alias vimplugs='vim $HOME/.vim/plugins.vim'
 alias i3rc='vim $HOME/.config/i3/config'
-#function cd(){ cd '$1' && ls; }
 
-alias wscan='nmcli device wifi rescan; nmcli device wifi list'
-alias wconn='nmcli device wifi connect'
-# User defined variables                                                                             
-export TERMINAL=urxvt
+# User defined variables                                              
 export FILE=ranger
 export VISUAL=vim
 export EDITOR=vim
 
-export WORKON_HOME=~/.virtualenvs
-source /usr/bin/virtualenvwrapper_lazy.sh
+#export WORKON_HOME=~/.virtualenvs
+#source /usr/bin/virtualenvwrapper_lazy.sh
 
 #Let QT and GTK autodetect retina screen and autoadjust
 export QT_DEVICE_PIXEL_RATIO=1.2

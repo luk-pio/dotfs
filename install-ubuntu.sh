@@ -1,23 +1,28 @@
 #!/bin/bash
 email="l.piotrak@samsung.com"
+cwd="$(pwd)"
 
-sudo apt install -y git curl
+sudo apt install -y git
 git config --global user.name "luk-pio"
 git config --global user.email $email
 ssh-keygen -t rsa -b 4096 -C $email
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
+cd $HOME
+
+# Spacemacs
+sudo apt install -y emacs
+git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+git --git-dir=$HOME/.emacs.d/.git checkout develop
+
+cd $cwd
 git clone https://github.com/luk-pio/dotfs.git
 cd dotfs
 
 # Font
 sudo apt install -y fonts-hack-ttf
 
-# Spacemacs
-sudo apt install -y emacs
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-git --git-dir=$HOME/.emacs.d/.git checkout develop
 ln -sr .spacemacs $HOME/.spacemacs
 mkdir -p $HOME/.emacs.d/private/org-roam/
 ln -sr .emacs.d/private/org-roam/packages.el $HOME/.emacs.d/private/org-roam/packages.el
