@@ -1,1 +1,1 @@
-sh -c "$(wget -O- https://github.com/luk-pio/dotfs/blob/master/install-ubuntu.sh)"
+sh -c "$(wget -O- https://raw.githubusercontent.com/luk-pio/dotfs/master/install-ubuntu.sh)"
