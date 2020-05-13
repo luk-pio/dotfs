@@ -18,9 +18,9 @@ sudo apt install -y fonts-hack-ttf
 sudo apt install -y emacs
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 git --git-dir=$HOME/.emacs.d/.git checkout develop
-ln -s .spacemacs $HOME/.spacemacs
+ln -sr .spacemacs $HOME/.spacemacs
 mkdir -p $HOME/.emacs.d/private/org-roam/
-ln -s .emacs.d/private/org-roam/packages.el $HOME/.emacs.d/private/org-roam/packages.el
+ln -sr .emacs.d/private/org-roam/packages.el $HOME/.emacs.d/private/org-roam/packages.el
 mkdir -p $HOME/.config/systemd/user/
 cp emacs.service $HOME/.config/systemd/user/emacs.service
 systemctl enable --user emacs
@@ -29,25 +29,23 @@ systemctl start --user emacs
 ## vim
 sudo apt install -y vim
 mkdir -p $HOME/.vim
-ln -s .vimrc $HOME/.vimrc
-ln -s .vim/plugins.vim $HOME/.vim/plugins.vim
-#
-## zsh
-sudo apt install -y zsh
-mv $HOME/.zshrc $HOME/.zshrc.old
-ln -s .zshrc $HOME/.zshrc
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+ln -sr .vimrc $HOME/.vimrc
+ln -sr .vim/plugins.vim $HOME/.vim/plugins.vim
 
 # aliases 
-ln -s .config/aliasrc $HOME/.config/aliasrc
-ln -s .config/shortcutrc $HOME/.config/shortcutrc
+ln -sr .config/aliasrc $HOME/.config/aliasrc
+ln -sr .config/shortcutrc $HOME/.config/shortcutrc
 
 # Pycharm
-ln -s .ideavimrc $HOME/.ideavimrc
-echo "Remeber to unzip pycharm configs"
+ln -sr .ideavimrc $HOME/.ideavimrc
 
 # Ranger
 sudo apt install -y ranger
 #mv $HOME/.config/ranger $HOME/.config/ranger.old
 #cp -r .config/ranger $HOME/.config/ranger
 
+## zsh
+sudo apt install -y zsh
+mv $HOME/.zshrc $HOME/.zshrc.old
+ln -sr .zshrc $HOME/.zshrc
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
