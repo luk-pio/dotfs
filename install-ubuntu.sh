@@ -20,13 +20,14 @@ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 git --git-dir=$HOME/.emacs.d/.git checkout develop
 ln .spacemacs $HOME/.spacemacs
 mkdir -p $HOME/emacs.d/private/org-roam/
-ln .emacs.d/private/org-roam/packages.el $HOME/.emacs.d/private/org-roam/packages.el
+ln ./.emacs.d/private/org-roam/packages.el $HOME/.emacs.d/private/org-roam/packages.el
+mkdir -p $HOME/.config/systemd/user/
 cp emacs.service $HOME/.config/systemd/user/emacs.service
 systemctl enable --user emacs
 systemctl start --user emacs
 #
 ## vim
-#sudo apt install -y vim
+sudo apt install -y vim
 ln .vimrc $HOME/.vimrc
 ln .vim/plugins.vim $HOME/.vim/plugins.vim
 #
@@ -45,7 +46,7 @@ ln .ideavimrc $HOME/.ideavimrc
 echo "Remeber to unzip pycharm configs"
 
 # Ranger
-#sudo apt install -y ranger
+sudo apt install -y ranger
 #mv $HOME/.config/ranger $HOME/.config/ranger.old
 #cp -r .config/ranger $HOME/.config/ranger
 

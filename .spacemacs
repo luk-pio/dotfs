@@ -30,25 +30,25 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(csv
+   '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     (ranger :variables
-             ranger-show-preview t
-             ranger-show-hidden t
-             ranger-cleanup-eagerly t
-             ranger-cleanup-on-disable t
-             ranger-ignored-extensions '("mkv" "flv" "iso" "mp4"))
+     ;; (ranger :variables
+     ;;         ranger-show-preview t
+     ;;         ranger-show-hidden t
+     ;;         ranger-cleanup-eagerly t
+     ;;         ranger-cleanup-on-disable t
+     ;;         ranger-ignored-extensions '("mkv" "flv" "iso" "mp4"))
      treemacs
      lsp
      (auto-completion :variables auto-completion-enable-snippets-in-popup nil auto-completion-enable-help-tooltip t auto-completion-enable-sort-by-usage t)
      dap ;; new debugger for python layer
      (python :variables
              python-backend 'lsp
-             ;; python-tab-width 4
+             python-tab-width 4
              python-fill-column 99
              python-formatter 'yapf
              python-format-on-save t
@@ -390,4 +390,4 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-)
+))
