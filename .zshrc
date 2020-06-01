@@ -13,8 +13,8 @@ brew
 npm 
 pip 
 python
-#zsh-syntax-highlighting
-#zsh-autosuggestions
+zsh-autosuggestions
+zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh

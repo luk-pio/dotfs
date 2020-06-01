@@ -23,9 +23,9 @@ cd dotfs
 # Font
 sudo apt install -y fonts-hack-ttf
 
-ln -sr .spacemacs $HOME/.spacemacs
+ln  .spacemacs $HOME/.spacemacs
 mkdir -p $HOME/.emacs.d/private/org-roam/
-ln -sr .emacs.d/private/org-roam/packages.el $HOME/.emacs.d/private/org-roam/packages.el
+ln  .emacs.d/private/org-roam/packages.el $HOME/.emacs.d/private/org-roam/packages.el
 mkdir -p $HOME/.config/systemd/user/
 cp emacs.service $HOME/.config/systemd/user/emacs.service
 systemctl enable --user emacs
@@ -34,15 +34,15 @@ systemctl start --user emacs
 ## vim
 sudo apt install -y vim
 mkdir -p $HOME/.vim
-ln -sr .vimrc $HOME/.vimrc
-ln -sr .vim/plugins.vim $HOME/.vim/plugins.vim
+ln  .vimrc $HOME/.vimrc
+ln  .vim/plugins.vim $HOME/.vim/plugins.vim
 
 # aliases 
-ln -sr .config/aliasrc $HOME/.config/aliasrc
-ln -sr .config/shortcutrc $HOME/.config/shortcutrc
+ln  .config/aliasrc $HOME/.config/aliasrc
+ln  .config/shortcutrc $HOME/.config/shortcutrc
 
 # Pycharm
-ln -sr .ideavimrc $HOME/.ideavimrc
+ln  .ideavimrc $HOME/.ideavimrc
 
 # Ranger
 sudo apt install -y ranger
@@ -52,5 +52,7 @@ sudo apt install -y ranger
 ## zsh
 sudo apt install -y zsh
 mv $HOME/.zshrc $HOME/.zshrc.old
-ln -sr .zshrc $HOME/.zshrc
+ln  .zshrc $HOME/.zshrc
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
