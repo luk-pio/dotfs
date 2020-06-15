@@ -36,16 +36,20 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ;; (ranger :variables
-     ;;         ranger-show-preview t
-     ;;         ranger-show-hidden t
-     ;;         ranger-cleanup-eagerly t
-     ;;         ranger-cleanup-on-disable t
-     ;;         ranger-ignored-extensions '("mkv" "flv" "iso" "mp4"))
+     
+     (ranger :variables
+             ranger-show-preview t
+             ranger-show-hidden t
+             ranger-cleanup-eagerly t
+             ranger-cleanup-on-disable t
+             ranger-ignored-extensions '("mkv" "flv" "iso" "mp4"))
      ;;treemacs
      ;;lsp
      ;;dap ;; new debugger for python layer
-     (auto-completion :variables auto-completion-enable-snippets-in-popup nil auto-completion-enable-help-tooltip t auto-completion-enable-sort-by-usage t)
+     (auto-completion :variables
+             auto-completion-enable-snippets-in-popup nil
+             auto-completion-enable-help-tooltip t
+             auto-completion-enable-sort-by-usage t)
      (python :variables
              python-backend 'lsp
              python-tab-width 4
@@ -54,6 +58,7 @@ values."
              python-format-on-save t
              python-sort-imports-on-save t
              python-pipenv-activate t)
+     latex
      helm
      auto-completion
      better-defaults
@@ -67,7 +72,7 @@ values."
           org-journal-file-type 'weekly
           org-journal-enable-agenda-integration t
      )
-     org-roam
+     ;; org-roam
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -154,7 +159,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
+   dotspacemacs-themes '(gruvbox
+                         spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -216,7 +222,7 @@ values."
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
    ;; (default 'cache)
-   dotspacemacs-auto-save-file-location 'cache
+   dotspacemacs-auto-save-file-location 'original
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
    dotspacemacs-max-rollback-slots 5
    ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
@@ -329,8 +335,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  global-visual-line-mode t
-  (setq evil-replace-with-register-key (kbd "gr"))
+  ;; (setq evil-replace-with-register-key (kbd "gr"))
   )
 
 (defun dotspacemacs/user-config ()
@@ -341,6 +346,7 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq evil-move-cursor-back nil)
+  (setq global-visual-line-mode t )
   (with-eval-after-load 'org
     (setq org-agenda-window-setup (quote current-window))
     (setq org-agenda-files (directory-files-recursively "~/Dropbox/org/roam" "org$"))
@@ -352,8 +358,7 @@ you should place your code here."
             ("BLOCKED" . "Firebrick")
             ("DONE" . "ForestGreen")
             ("CANCELLED" .  "FireBrick"))))
-  (add-hook 'after-init-hook 'org-roam--build-cache-async)
-  (setq golden-ratio-mode nil)
+  ;; (add-hook 'after-init-hook 'org-roam--build-cache-async)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -380,12 +385,37 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
  '(evil-want-Y-yank-to-eol nil)
- '(helm-completion-style (quote emacs))
+ '(hl-todo-keyword-faces
+   (quote
+    (("TODO" . "#dc752f")
+     ("NEXT" . "#dc752f")
+     ("THEM" . "#2d9574")
+     ("PROG" . "#4f97d7")
+     ("OKAY" . "#4f97d7")
+     ("DONT" . "#f2241f")
+     ("FAIL" . "#f2241f")
+     ("DONE" . "#86dc2f")
+     ("NOTE" . "#b1951d")
+     ("KLUDGE" . "#b1951d")
+     ("HACK" . "#b1951d")
+     ("TEMP" . "#b1951d")
+     ("FIXME" . "#dc752f")
+     ("XXX+" . "#dc752f")
+     ("\\?\\?\\?+" . "#dc752f"))))
+ '(org-agenda-files
+   (quote
+    ("/home/l/Dropbox/org/roam/.#mas.org" "/home/l/Dropbox/org/roam/2020-03-03.org" "/home/l/Dropbox/org/roam/2020-03-10.org" "/home/l/Dropbox/org/roam/2020-03-15.org" "/home/l/Dropbox/org/roam/2020-03-19.org" "/home/l/Dropbox/org/roam/20200315191811-fundamental_analysis.org" "/home/l/Dropbox/org/roam/20200315193256-investing.org" "/home/l/Dropbox/org/roam/20200315204822-inflation.org" "/home/l/Dropbox/org/roam/20200316215130-meditation.org" "/home/l/Dropbox/org/roam/20200317200001-working_capital.org" "/home/l/Dropbox/org/roam/20200317202106-book_value.org" "/home/l/Dropbox/org/roam/20200317202427-balance_sheet.org" "/home/l/Dropbox/org/roam/20200317202519-income_statement.org" "/home/l/Dropbox/org/roam/20200317202536-cash_flow_statement.org" "/home/l/Dropbox/org/roam/20200317204915-technical_analysis.org" "/home/l/Dropbox/org/roam/20200317205031-options.org" "/home/l/Dropbox/org/roam/20200317212556-family.org" "/home/l/Dropbox/org/roam/20200317212619-emilka.org" "/home/l/Dropbox/org/roam/20200317214150-life.org" "/home/l/Dropbox/org/roam/20200319070629-neuralink.org" "/home/l/Dropbox/org/roam/20200319071418-mathematics.org" "/home/l/Dropbox/org/roam/20200319071504-engineering.org" "/home/l/Dropbox/org/roam/20200319071542-statistics.org" "/home/l/Dropbox/org/roam/20200319071610-neuro_science.org" "/home/l/Dropbox/org/roam/20200319181433-technology.org" "/home/l/Dropbox/org/roam/20200328090640-first_principles.org" "/home/l/Dropbox/org/roam/20200328092743-epistemology.org" "/home/l/Dropbox/org/roam/20200330202635-cpp.org" "/home/l/Dropbox/org/roam/20200330202657-accelerated_c.org" "/home/l/Dropbox/org/roam/ableton.org" "/home/l/Dropbox/org/roam/architecture.org" "/home/l/Dropbox/org/roam/archmacbook.org" "/home/l/Dropbox/org/roam/art.org" "/home/l/Dropbox/org/roam/bash.org" "/home/l/Dropbox/org/roam/blog.org" "/home/l/Dropbox/org/roam/books.org" "/home/l/Dropbox/org/roam/bsi.org" "/home/l/Dropbox/org/roam/computer_science.org" "/home/l/Dropbox/org/roam/data_mining.org" "/home/l/Dropbox/org/roam/data_science.org" "/home/l/Dropbox/org/roam/databases.org" "/home/l/Dropbox/org/roam/databending.org" "/home/l/Dropbox/org/roam/design.org" "/home/l/Dropbox/org/roam/devops.org" "/home/l/Dropbox/org/roam/dotfiles.org" "/home/l/Dropbox/org/roam/drums.org" "/home/l/Dropbox/org/roam/edward_snowden.org" "/home/l/Dropbox/org/roam/electronic_music.org" "/home/l/Dropbox/org/roam/emacs.org" "/home/l/Dropbox/org/roam/exercise.org" "/home/l/Dropbox/org/roam/finance.org" "/home/l/Dropbox/org/roam/fitness.org" "/home/l/Dropbox/org/roam/front_end.org" "/home/l/Dropbox/org/roam/generative.org" "/home/l/Dropbox/org/roam/goals_for_2020.org" "/home/l/Dropbox/org/roam/google_summer_of_code.org" "/home/l/Dropbox/org/roam/graph_databases.org" "/home/l/Dropbox/org/roam/health.org" "/home/l/Dropbox/org/roam/hi_hats.org" "/home/l/Dropbox/org/roam/humphries_book.org" "/home/l/Dropbox/org/roam/ipb.org" "/home/l/Dropbox/org/roam/kick.org" "/home/l/Dropbox/org/roam/knn.org" "/home/l/Dropbox/org/roam/knowledge_processing.org" "/home/l/Dropbox/org/roam/lex Friedman notes.org" "/home/l/Dropbox/org/roam/m4l.org" "/home/l/Dropbox/org/roam/macos.org" "/home/l/Dropbox/org/roam/mas.org" "/home/l/Dropbox/org/roam/medical.org" "/home/l/Dropbox/org/roam/mental_models.org" "/home/l/Dropbox/org/roam/miw.org" "/home/l/Dropbox/org/roam/monthly_expenses.org" "/home/l/Dropbox/org/roam/music.org" "/home/l/Dropbox/org/roam/mwr.org" "/home/l/Dropbox/org/roam/my_values.org" "/home/l/Dropbox/org/roam/openstats.org" "/home/l/Dropbox/org/roam/operating_systems.org" "/home/l/Dropbox/org/roam/org.org" "/home/l/Dropbox/org/roam/paintings.org" "/home/l/Dropbox/org/roam/pandas.org" "/home/l/Dropbox/org/roam/passat.org" "/home/l/Dropbox/org/roam/philosophy.org" "/home/l/Dropbox/org/roam/piano.org" "/home/l/Dropbox/org/roam/pjatk.org" "/home/l/Dropbox/org/roam/pro.org" "/home/l/Dropbox/org/roam/production.org" "/home/l/Dropbox/org/roam/programming.org" "/home/l/Dropbox/org/roam/python.org" "/home/l/Dropbox/org/roam/rss_feed.org" "/home/l/Dropbox/org/roam/security.org" "/home/l/Dropbox/org/roam/self_improvement.org" "/home/l/Dropbox/org/roam/sem6.org" "/home/l/Dropbox/org/roam/shopping.org" "/home/l/Dropbox/org/roam/snare.org" "/home/l/Dropbox/org/roam/social.org" "/home/l/Dropbox/org/roam/software_architecture.org" "/home/l/Dropbox/org/roam/software_development.org" "/home/l/Dropbox/org/roam/song1.org" "/home/l/Dropbox/org/roam/speech_recognition.org" "/home/l/Dropbox/org/roam/supplements.org" "/home/l/Dropbox/org/roam/the_bible.org" "/home/l/Dropbox/org/roam/the_intelligent_investor.org" "/home/l/Dropbox/org/roam/the_python_tutorial.org" "/home/l/Dropbox/org/roam/thesis.org" "/home/l/Dropbox/org/roam/tidalcycles.org" "/home/l/Dropbox/org/roam/travel.org" "/home/l/Dropbox/org/roam/unix.org" "/home/l/Dropbox/org/roam/wishlist.org" "/home/l/Dropbox/org/roam/work.org" "/home/l/Dropbox/org/roam/workflow.org")))
+ '(package-selected-packages
+   (quote
+    (gruvbox-theme autothemer company-reftex company-auctex auctex ranger yasnippet-snippets yapfify xterm-color ws-butler writeroom-mode winum which-key vterm volatile-highlights vi-tilde-fringe uuidgen use-package unfill treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil toc-org terminal-here symon symbol-overlay string-inflection spaceline-all-the-icons smeargle shell-pop restart-emacs rainbow-delimiters pytest pyenv-mode py-isort posframe popwin pippel pipenv pip-requirements pcre2el password-generator paradox overseer orgit org-superstar org-projectile org-present org-pomodoro org-mime org-journal org-download org-cliplink org-brain open-junk-file nameless mwim multi-term move-text mmm-mode markdown-toc magit-svn magit-section magit-gitflow macrostep lsp-ui lsp-python-ms lorem-ipsum live-py-mode link-hint indent-guide importmagic hybrid-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-org helm-mode-manager helm-make helm-lsp helm-ls-git helm-gitignore helm-git-grep helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-pos-tip flycheck-package flycheck-elsa flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-textobj-line evil-surround evil-org evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emr elisp-slime-nav editorconfig dumb-jump dotenv-mode diminish devdocs define-word dap-mode cython-mode company-statistics company-quickhelp company-anaconda column-enforce-mode clean-aindent-mode centered-cursor-mode browse-at-remote blacken auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent ace-link ace-jump-helm-line ac-ispell)))
+ '(pdf-view-midnight-colors (quote ("#b2b2b2" . "#292b2e"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-))
+)

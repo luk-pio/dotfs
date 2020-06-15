@@ -1,8 +1,8 @@
 #!/bin/bash
-email="l.piotrak@samsung.com"
+email=""
 cwd="$(pwd)"
 
-sudo apt install -y git
+sudo apt install -y git curl
 git config --global user.name "luk-pio"
 git config --global user.email $email
 ssh-keygen -t rsa -b 4096 -C $email
@@ -26,6 +26,8 @@ sudo apt install -y fonts-hack-ttf
 ln  .spacemacs $HOME/.spacemacs
 mkdir -p $HOME/.emacs.d/private/org-roam/
 ln  .emacs.d/private/org-roam/packages.el $HOME/.emacs.d/private/org-roam/packages.el
+mkdir -p $HOME/.emacs.d/private/snippets/org-mode
+ln  .emacs.d/private/snippets/org-mode/work-cycle $HOME/.emacs.d/private/snippets/org-mode/work-cycle
 mkdir -p $HOME/.config/systemd/user/
 cp emacs.service $HOME/.config/systemd/user/emacs.service
 systemctl enable --user emacs
@@ -35,6 +37,8 @@ systemctl start --user emacs
 sudo apt install -y vim
 mkdir -p $HOME/.vim
 ln  .vimrc $HOME/.vimrc
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln  .vim/plugins.vim $HOME/.vim/plugins.vim
 
 # aliases 
