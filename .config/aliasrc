@@ -3,7 +3,8 @@ alias r=ranger
 alias aliasrc='vim $HOME/.config/aliasrc'
 alias vimrc='vim $HOME/.vimrc'
 alias vimplugs='vim $HOME/.vim/plugins.vim'
-alias i3rc='vim $HOME/.config/i3/config'
+alias i="sudo apt install"
+alias u="sudo apt remove"
 
 # User defined variables                                              
 export FILE=ranger

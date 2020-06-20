@@ -335,6 +335,9 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (defun ask-user-about-lock (file other-user)
+    "A value of t says to grab the lock on the file."
+    t)
   ;; (setq evil-replace-with-register-key (kbd "gr"))
   )
 

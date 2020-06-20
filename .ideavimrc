@@ -32,8 +32,6 @@ highlight PmenuSel ctermbg=green ctermfg=white
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
 
-
-
 packadd! matchit
 
 " IdeaVim specific
@@ -41,3 +39,6 @@ set easymotion
 set surround
 set commentary
 
+nmap <leader><leader>s :action KJumpAction<cr>
+nmap <leader><leader>w :action KJumpAction.Word0<cr>
+nmap <leader><leader>l :action KJumpAction.1<cr>
