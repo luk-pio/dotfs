@@ -1,62 +1,123 @@
 #!/bin/bash
-email=""
-cwd="$(pwd)"
+CWD="$(pwd)"
+DOTFS="$(pwd)"
 
-sudo apt install -y git curl
-git config --global user.name "luk-pio"
-git config --global user.email $email
-ssh-keygen -t rsa -b 4096 -C $email
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_rsa
+echo
+PROMPT="Do you want to set up git and ssh keys? [y/n] "
+read -p "$PROMPT" ANSWER
+if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
+	read -p "Input your github email: " EMAIL
+	read -p "Input your github username: " GH_USER
+	sudo apt install -y git curl
+	git config --global user.name "$GH_USER"
+	git config --global user.email $EMAIL
+	ssh-keygen -t rsa -b 4096 -C $EMAIL
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/id_rsa
+fi
 
-cd $HOME
+
+echo
+PROMPT="Do you want to clone the dotfs repo? [y/n] "
+read -p "$PROMPT" ANSWER
+if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
+	cd $CWD
+	git clone https://github.com/luk-pio/dotfs.git
+	cd dotfs
+	DOTFS="$(cwd)"
+	cd $CWD
+fi
 
 # Spacemacs
-sudo apt install -y emacs
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-git --git-dir=$HOME/.emacs.d/.git checkout develop
 
-cd $cwd
-git clone https://github.com/luk-pio/dotfs.git
-cd dotfs
+echo
+PROMPT="Do you want to set up spacemacs? [y/n] "
+read -p "$PROMPT" ANSWER
+if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
+	cd $HOME
+	sudo apt install -y emacs
+	git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+	cd ~/.emacs.d
+	git checkout develop
+	cd "$DOTFS"
+	ln .spacemacs $HOME/.spacemacs
+	mkdir -p $HOME/.emacs.d/private/org-roam/
+	ln  .emacs.d/private/org-roam/packages.el $HOME/.emacs.d/private/org-roam/packages.el
+	mkdir -p $HOME/.emacs.d/private/snippets/org-mode
+	ln  .emacs.d/private/snippets/org-mode/work-cycle $HOME/.emacs.d/private/snippets/org-mode/work-cycle
+	mkdir -p $HOME/.config/systemd/user/
+	cp emacs.service $HOME/.config/systemd/user/emacs.service
+	systemctl enable --user emacs
+	systemctl start --user emacs
+	cd "$CWD"
+fi
 
 # Font
-sudo apt install -y fonts-hack-ttf
 
-ln  .spacemacs $HOME/.spacemacs
-mkdir -p $HOME/.emacs.d/private/org-roam/
-ln  .emacs.d/private/org-roam/packages.el $HOME/.emacs.d/private/org-roam/packages.el
-mkdir -p $HOME/.emacs.d/private/snippets/org-mode
-ln  .emacs.d/private/snippets/org-mode/work-cycle $HOME/.emacs.d/private/snippets/org-mode/work-cycle
-mkdir -p $HOME/.config/systemd/user/
-cp emacs.service $HOME/.config/systemd/user/emacs.service
-systemctl enable --user emacs
-systemctl start --user emacs
-#
+echo
+PROMPT="Hack font? [y/n] "
+read -p "$PROMPT" ANSWER
+if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
+	sudo apt install -y fonts-hack-ttf
+fi
+
+
 ## vim
-sudo apt install -y vim
-mkdir -p $HOME/.vim
-ln  .vimrc $HOME/.vimrc
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-ln  .vim/plugins.vim $HOME/.vim/plugins.vim
+
+echo
+PROMPT="Do you want to set up vim? [y/n] "
+read -p "$PROMPT" ANSWER
+if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
+	sudo apt install -y vim
+	mkdir -p $HOME/.vim
+	cd "$DOTFS"
+	ln  .vimrc $HOME/.vimrc
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	ln  .vim/plugins.vim $HOME/.vim/plugins.vim
+	cd "$CWD"
+fi
 
 # aliases 
-ln  .config/aliasrc $HOME/.config/aliasrc
-ln  .config/shortcutrc $HOME/.config/shortcutrc
+echo
+PROMPT="Link aliases? [y/n] "
+read -p "$PROMPT" ANSWER
+if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
+	cd "$DOTFS"
+	ln  .config/aliasrc $HOME/.config/aliasrc
+	ln  .config/shortcutrc $HOME/.config/shortcutrc
+	cd "$CWD"
+fi 
 
 # Pycharm
-ln  .ideavimrc $HOME/.ideavimrc
+echo
+PROMPT="Link ideavimrc? [y/n] "
+read -p "$PROMPT" ANSWER
+if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
+	cd "$DOTFS"
+	ln  .ideavimrc $HOME/.ideavimrc
+	cd "$CWD"
+fi
 
 # Ranger
-sudo apt install -y ranger
-#mv $HOME/.config/ranger $HOME/.config/ranger.old
-#cp -r .config/ranger $HOME/.config/ranger
+echo
+PROMPT="Do you want to set up ranger? [y/n] "
+read -p "$PROMPT" ANSWER
+if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
+	cd "$DOTFS"
+	sudo apt install -y ranger
+	cd "$CWD"
+	#mv $HOME/.config/ranger $HOME/.config/ranger.old
+	#cp -r .config/ranger $HOME/.config/ranger
+fi
 
 ## zsh
-sudo apt install -y zsh
-mv $HOME/.zshrc $HOME/.zshrc.old
-ln  .zshrc $HOME/.zshrc
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+echo
+PROMPT="Do you want to set up zsh? [y/n] "
+read -p "$PROMPT" ANSWER
+if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
+	cd "$DOTFS"
+	sudo apt install -y zsh
+	cd "$CWD"
+	sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
