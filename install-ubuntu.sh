@@ -59,6 +59,7 @@ PROMPT="Hack font? [y/n] "
 read -p "$PROMPT" ANSWER
 if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 	sudo apt install -y fonts-hack-ttf
+  curl -O https://github.com/pyrho/hack-font-ligature-nerd-font/blob/master/font/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf\?raw\=true
 fi
 
 
