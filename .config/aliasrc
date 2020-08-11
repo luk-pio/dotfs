@@ -1,24 +1,26 @@
-# Path
-export PATH=/usr/local/bin/custom:/$HOME/.emacs.d/bin:$HOME/Workspace/texlive/bin/x86_64-linux:$PATH
+export GOPATH=$HOME/GolandProjects
+export PATH=$PATH:/usr/local/bin/custom:/usr/local/go/bin:$(go env GOPATH)/bin
+
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias r=ranger
+alias aliasrc='vim $HOME/.config/aliasrc'
+alias vimrc='vim $HOME/.vimrc'
+alias zshrc='vim $HOME/.zshrc'
+alias vimplugs='vim $HOME/.vim/plugins.vim'
+alias i="sudo apt install"
+alias u="sudo apt remove"
 
 # User defined variables                                              
 export FILE=ranger
 export VISUAL=vim
 export EDITOR=vim
 
-alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-alias r=ranger
-alias aliasrc='$EDITOR $HOME/.config/aliasrc'
-alias vimrc='$EDITOR $HOME/.vimrc'
-alias vimplugs='$EDITOR $HOME/.vim/plugins.vim'
-alias i="sudo apt install"
-alias u="sudo apt remove"
-alias zshrc="$EDITOR $HOME/.zshrc"
-
 # Work
-alias a%cdsp='~/PycharmProjects/CDSP'     
+alias a%cdsp='~/PycharmProjects/CDSP'
 alias a%dbaasha='~/PycharmProjects/CDSP/cdsp/dbaas-ha'
 alias restart-cdsp='source $HOME/Workspace/cdsp-restart.sh'
+alias a%api='~/PycharmProjects/CDSP/cdsp-api'
+alias a%config='~/Workspace/configs/'
 
 
 #export WORKON_HOME=~/.virtualenvs

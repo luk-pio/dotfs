@@ -28,30 +28,23 @@ if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 	cd $CWD
 fi
 
-# Spacemacs
+# doom emacs
 
 echo
 PROMPT="Do you want to set up doom emacs? [y/n] "
 read -p "$PROMPT" ANSWER
 if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 	cd $HOME
-	sudo apt install -y emacs ripgrep
+	# sudo apt install -y emacs ripgrep
+  mv ~/.emacs.d ~/.emacs.d.old
   git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
   ~/.emacs.d/bin/doom install
-	#git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-#	cd ~/.emacs.d
-#	git checkout develop
 	cd "$DOTFS"
   rm $HOME/.emacs.d/init.el
   ln .emacs.d/init.el $HOME/.emacs.d/init.el
   rm $HOME/.doom.d/config.el $HOME/.doom.d/packages.el
   ln .doom.d/config.el $HOME/.doom.d/config.el
   ln .doom.d/packages.el $HOME/.doom.d/packages.el
-	#ln .spacemacs $HOME/.spacemacs
-	#mkdir -p $HOME/.emacs.d/private/org-roam/
-	#ln  .emacs.d/private/org-roam/packages.el $HOME/.emacs.d/private/org-roam/packages.el
-	#mkdir -p $HOME/.emacs.d/private/snippets/org-mode
-	#ln  .emacs.d/private/snippets/org-mode/work-cycle $HOME/.emacs.d/private/snippets/org-mode/work-cycle
 	mkdir -p $HOME/.config/systemd/user/
 	cp emacs.service $HOME/.config/systemd/user/emacs.service
 	systemctl enable --user emacs
