@@ -35,16 +35,14 @@ PROMPT="Do you want to set up doom emacs? [y/n] "
 read -p "$PROMPT" ANSWER
 if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 	cd $HOME
-	# sudo apt install -y emacs ripgrep
-  mv ~/.emacs.d ~/.emacs.d.old
-  git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
-  ~/.emacs.d/bin/doom install
+	sudo apt install -y ripgrep
+	sudo snap install emacs --candidate --classic
+	git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+	~/.emacs.d/bin/doom install
 	cd "$DOTFS"
-  rm $HOME/.emacs.d/init.el
-  ln .emacs.d/init.el $HOME/.emacs.d/init.el
-  rm $HOME/.doom.d/config.el $HOME/.doom.d/packages.el
-  ln .doom.d/config.el $HOME/.doom.d/config.el
-  ln .doom.d/packages.el $HOME/.doom.d/packages.el
+	rm $HOME/.doom.d/config.el $HOME/.doom.d/packages.el
+	ln .doom.d/config.el $HOME/.doom.d/config.el
+	ln .doom.d/packages.el $HOME/.doom.d/packages.el
 	mkdir -p $HOME/.config/systemd/user/
 	cp emacs.service $HOME/.config/systemd/user/emacs.service
 	systemctl enable --user emacs
@@ -58,8 +56,7 @@ echo
 PROMPT="Hack font? [y/n] "
 read -p "$PROMPT" ANSWER
 if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
-	sudo apt install -y fonts-hack-ttf
-  curl -O "https://github.com/pyrho/hack-font-ligature-nerd-font/raw/master/font/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf"
+	curl -O "https://github.com/pyrho/hack-font-ligature-nerd-font/raw/master/font/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf"
 fi
 
 

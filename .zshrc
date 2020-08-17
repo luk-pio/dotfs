@@ -44,7 +44,6 @@ bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
-bindkey '^R' history-incremental-search-forward
 
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
