@@ -1,5 +1,5 @@
-export GOPATH=$HOME/GolandProjects
-export PATH=$PATH:/usr/local/bin/custom:/usr/local/go/bin:$(go env GOPATH)/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/bin/custom:/usr/local/go/bin:$GOPATH/bin
 
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias r=ranger
@@ -9,11 +9,12 @@ alias zshrc='vim $HOME/.zshrc'
 alias vimplugs='vim $HOME/.vim/plugins.vim'
 alias i="sudo apt install"
 alias u="sudo apt remove"
+alias em="emacs -nw"
 
 # User defined variables                                              
 export FILE=ranger
-export VISUAL=vim
-export EDITOR=vim
+export VISUAL=emacs
+export EDITOR=emacs
 
 # Work
 alias a%cdsp='~/PycharmProjects/CDSP'
@@ -21,10 +22,6 @@ alias a%dbaasha='~/PycharmProjects/CDSP/cdsp/dbaas-ha'
 alias restart-cdsp='source $HOME/Workspace/cdsp-restart.sh'
 alias a%api='~/PycharmProjects/CDSP/cdsp-api'
 alias a%config='~/Workspace/configs/'
-
-
-#export WORKON_HOME=~/.virtualenvs
-#source /usr/bin/virtualenvwrapper_lazy.sh
 
 function mkd() {
 	mkdir -p "$@" && cd "$_";

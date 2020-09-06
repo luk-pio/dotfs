@@ -21,11 +21,11 @@ echo
 PROMPT="Do you want to clone the dotfs repo? [y/n] "
 read -p "$PROMPT" ANSWER
 if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
-	cd $CWD
+	cd "$CWD"
 	git clone https://github.com/luk-pio/dotfs.git
 	cd dotfs
-	DOTFS="$(cwd)"
-	cd $CWD
+	DOTFS="$(pwd)"
+	cd "$CWD"
 fi
 
 # doom emacs
@@ -34,17 +34,18 @@ echo
 PROMPT="Do you want to set up doom emacs? [y/n] "
 read -p "$PROMPT" ANSWER
 if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
-	cd $HOME
+	cd "$HOME"
 	sudo apt install -y ripgrep
 	sudo snap install emacs --candidate --classic
 	git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
 	~/.emacs.d/bin/doom install
 	cd "$DOTFS"
-	rm $HOME/.doom.d/config.el $HOME/.doom.d/packages.el
-	ln .doom.d/config.el $HOME/.doom.d/config.el
-	ln .doom.d/packages.el $HOME/.doom.d/packages.el
-	mkdir -p $HOME/.config/systemd/user/
-	cp emacs.service $HOME/.config/systemd/user/emacs.service
+	rm "$HOME/.doom.d/config.el" "$HOME/.doom.d/packages.el"
+	ln -s -b "$DOTFS/.doom.d/config.el" "$HOME/.doom.d/config.el"
+	ln -s -b "$DOTFS/.doom.d/packages.el" "$HOME/.doom.d/packages.el"
+	ln -s -b "$DOTFS/.doom.d/init.el" "$HOME/.doom.d/init.el"
+	mkdir -p "$HOME/.config/systemd/user/"
+	cp emacs.service "$HOME/.config/systemd/user/emacs.service"
 	systemctl enable --user emacs
 	systemctl start --user emacs
 	cd "$CWD"
@@ -67,12 +68,12 @@ PROMPT="Do you want to set up vim? [y/n] "
 read -p "$PROMPT" ANSWER
 if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 	sudo apt install -y vim
-	mkdir -p $HOME/.vim
+	mkdir -p "$HOME/.vim"
 	cd "$DOTFS"
-	ln  .vimrc $HOME/.vimrc
+	ln -s -b "$DOTFS/.vimrc" "$HOME/.vimrc"
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 	    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	ln  .vim/plugins.vim $HOME/.vim/plugins.vim
+	ln -s -b "$DOTFS/.vim/plugins.vim" "$HOME/.vim/plugins.vim"
 	cd "$CWD"
 fi
 
@@ -82,8 +83,8 @@ PROMPT="Link aliases? [y/n] "
 read -p "$PROMPT" ANSWER
 if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 	cd "$DOTFS"
-	ln  .config/aliasrc $HOME/.config/aliasrc
-	ln  .config/shortcutrc $HOME/.config/shortcutrc
+	ln -s -b "$DOTFS/.config/aliasrc" "$HOME/.config/aliasrc"
+	ln -s -b "$DOTFS/.config/shortcutrc" "$HOME/.config/shortcutrc"
 	cd "$CWD"
 fi 
 
@@ -93,7 +94,7 @@ PROMPT="Link ideavimrc? [y/n] "
 read -p "$PROMPT" ANSWER
 if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 	cd "$DOTFS"
-	ln  .ideavimrc $HOME/.ideavimrc
+	ln -s -b "$DOTFS/.ideavimrc" "$HOME/.ideavimrc"
 	cd "$CWD"
 fi
 
