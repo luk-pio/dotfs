@@ -1,0 +1,34 @@
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("home"
+ (filename . "~/")
+ (front-context-string . ".emacs.d\n  drwxr")
+ (rear-context-string . "0K sie 17 11:53 ")
+ (position . 426))
+("dotfs"
+ (filename . "~/dotfs/")
+ (front-context-string . ".emacs.d\n  drwxr")
+ (rear-context-string . "0K wrz  6 20:13 ")
+ (position . 199))
+("i3conf"
+ (filename . "~/dotfs/.config/regolith/i3/config")
+ (front-context-string . "################")
+ (rear-context-string)
+ (position . 1))
+("install-ubuntu"
+ (filename . "~/dotfs/install-ubuntu.sh")
+ (front-context-string . "-p \"$HOME/.confi")
+ (rear-context-string . "init.el\"\n	mkdir ")
+ (position . 1301))
+("Thesis"
+ (treemacs-bookmark-path . #1="/home/l/Workspace/Engineering-Thesis")
+ (handler . treemacs--bookmark-handler)
+ (filename . #1#))
+("Downloads"
+ (filename . "~/Downloads/")
+ (front-context-string . "install-tl-20200")
+ (rear-context-string . "0K lip 19 10:41 ")
+ (position . 111))
+)

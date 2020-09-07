@@ -40,10 +40,13 @@ if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 	git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
 	~/.emacs.d/bin/doom install
 	cd "$DOTFS"
+	# TODO recursively link all files under .doom and .emacs
 	rm "$HOME/.doom.d/config.el" "$HOME/.doom.d/packages.el"
 	ln -s -b "$DOTFS/.doom.d/config.el" "$HOME/.doom.d/config.el"
 	ln -s -b "$DOTFS/.doom.d/packages.el" "$HOME/.doom.d/packages.el"
 	ln -s -b "$DOTFS/.doom.d/init.el" "$HOME/.doom.d/init.el"
+	ln -s -b "$DOTFS/.emacs.d/.local/etc/bookmarks" "$HOME/.emacs.d/.local/etc/bookmarks"
+	ln -s -b "$DOTFS/.config/regolith/Xresources" "$HOME/.config/regolith/Xresources"
 	mkdir -p "$HOME/.config/systemd/user/"
 	cp emacs.service "$HOME/.config/systemd/user/emacs.service"
 	systemctl enable --user emacs
@@ -108,6 +111,15 @@ if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 	cd "$CWD"
 	#mv $HOME/.config/ranger $HOME/.config/ranger.old
 	#cp -r .config/ranger $HOME/.config/ranger
+fi
+
+## i3
+echo
+PROMPT="Do you want to copy i3 config? [y/n] "
+read -p "$PROMPT" ANSWER
+if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
+	cd "$CWD"
+	ln -s -b "$DOTFS/.config/regolith/i3/config" "$HOME/.config/regolith/i3/config"
 fi
 
 ## zsh
