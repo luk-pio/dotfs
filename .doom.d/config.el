@@ -25,20 +25,29 @@
 (setq user-full-name ""
       user-mail-address "")
 
-;; Appearance
+;; --------------------- Appearance ---------------------
 
 (setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 15 :weight 'light)
       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
 (setq doom-theme 'doom-tomorrow-night)
 
-;; Org Mode
+;; --------------------- Org Mode ---------------------
 
 (setq org-directory "~/Dropbox/org/")
 
-(setq display-line-numbers-type 'relative)
+(setq org-roam-directory "~/Dropbox/org/roam")
 
-;; Misc
+;; Org Pomodoro
+;; TODO add hook to send notification to mobile when break ends
+
+(setq org-pomodoro-length 52)
+(setq org-pomodoro-short-break-length 17)
+(setq org-pomodoro-long-break-length 17)
+
+;; --------------------- Misc ---------------------
+
+(setq display-line-numbers-type 'relative)
 
 ;; Make avy lambda searches span all windows
 

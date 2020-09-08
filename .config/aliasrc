@@ -1,15 +1,15 @@
 export GOPATH=$HOME/go
-export PATH=$PATH:/usr/local/bin/custom:/usr/local/go/bin:$GOPATH/bin
+export PATH=$PATH:$HOME/.local/bin:/usr/local/bin/custom:/usr/local/go/bin:$GOPATH/bin
 
+export em="emacs -nw"
+alias em=$em
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias r=ranger
-alias aliasrc='vim $HOME/.config/aliasrc'
-alias vimrc='vim $HOME/.vimrc'
-alias zshrc='vim $HOME/.zshrc'
-alias vimplugs='vim $HOME/.vim/plugins.vim'
+alias aliasrc="$editor $HOME/.config/aliasrc"
+alias vimrc="$editor $HOME/.vimrc"
+alias zshrc="$editor $HOME/.zshrc"
 alias i="sudo apt install"
 alias u="sudo apt remove"
-alias em="emacs -nw"
 
 # User defined variables                                              
 export FILE=ranger

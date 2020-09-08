@@ -29,13 +29,19 @@ if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 fi
 
 # doom emacs
+echo
+PROMPT="Do you want to install doom python dependencies? [y/n] "
+read -p "$PROMPT" ANSWER
+if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
+	pip3 install --user isort pipenv pytest
+fi
 
 echo
 PROMPT="Do you want to set up doom emacs? [y/n] "
 read -p "$PROMPT" ANSWER
 if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 	cd "$HOME"
-	sudo apt install -y ripgrep
+	sudo apt install -y ripgrep fd-find
 	sudo snap install emacs --candidate --classic
 	git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
 	~/.emacs.d/bin/doom install
