@@ -9,6 +9,8 @@ if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 	read -p "Input your github email: " EMAIL
 	read -p "Input your github username: " GH_USER
 	sudo apt install -y git curl
+	# This is used when using 2fa with https to store the access token
+	git config --global credentials.helper store
 	git config --global user.name "$GH_USER"
 	git config --global user.email $EMAIL
 	ssh-keygen -t rsa -b 4096 -C $EMAIL
