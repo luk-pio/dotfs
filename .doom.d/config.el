@@ -30,7 +30,7 @@
 (setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 15 :weight 'light)
       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
-(setq doom-theme 'doom-tomorrow-night)
+(setq doom-theme 'doom-one)
 
 ;; --------------------- Org Mode ---------------------
 
@@ -41,9 +41,9 @@
 ;; Org Pomodoro
 ;; TODO add hook to send notification to mobile when break ends
 
-(setq org-pomodoro-length 52)
-(setq org-pomodoro-short-break-length 17)
-(setq org-pomodoro-long-break-length 17)
+(setq org-pomodoro-length 50)
+(setq org-pomodoro-short-break-length 10)
+(setq org-pomodoro-long-break-length 10)
 
 ;; --------------------- Misc ---------------------
 

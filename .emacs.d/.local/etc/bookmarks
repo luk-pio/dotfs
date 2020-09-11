@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("aliasrc"
+(("org-capture-last-stored"
+ (filename . "~/Dropbox/org/roam/20200909145453-entrepeneurship.org")
+ (front-context-string . "#+title: entrepe")
+ (rear-context-string)
+ (position . 1))
+("aliasrc"
  (filename . "~/dotfs/.config/aliasrc")
  (front-context-string . "export GOPATH=$H")
  (rear-context-string)
