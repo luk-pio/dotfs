@@ -22,6 +22,7 @@ pip
 python
 zsh-autosuggestions
 zsh-syntax-highlighting
+virtualenvwrapper
 )
 
 source $ZSH/oh-my-zsh.sh

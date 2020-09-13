@@ -151,11 +151,17 @@ PROMPT="Pull the syncthing container? [y/n] "
 read -p "$PROMPT" ANSWER
 if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 	docker pull syncthing/syncthing
-	docker run -e STGUIADDRESS= \
-	--network=host \
-    -v /wherever/st-sync:/var/syncthing \
-    syncthing/syncthing:latest
 fi
+
+
+echo
+PROMPT="Install virtualenvwrapper? [y/n] "
+read -p "$PROMPT" ANSWER
+if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
+	python3 -m pip install virtualenvwrapper
+fi
+
+
 
 
 

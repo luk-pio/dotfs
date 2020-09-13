@@ -11,6 +11,14 @@ alias zshrc="$editor $HOME/.zshrc"
 alias i="sudo apt install"
 alias u="sudo apt remove"
 
+# Virtualenvwrapper things
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Workspace
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+source "$HOME/.local/bin/virtualenvwrapper.sh"
+
+
 # User defined variables                                              
 export FILE=ranger
 export VISUAL=emacs

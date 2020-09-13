@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("syncthing"
+(("zshrc"
+ (filename . "~/dotfs/.zshrc")
+ (front-context-string . "# Enable Powerle")
+ (rear-context-string)
+ (position . 1))
+("syncthing"
  (filename . "/wherever/st-sync/")
  (front-context-string)
  (rear-context-string . "0K wrz 12 10:41 ")
