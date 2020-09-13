@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("org-capture-last-stored"
+(("syncthing"
+ (filename . "/wherever/st-sync/")
+ (front-context-string)
+ (rear-context-string . "0K wrz 12 10:41 ")
+ (position . 265))
+("org-capture-last-stored"
  (filename . "~/Dropbox/org/roam/20200909145453-entrepeneurship.org")
  (front-context-string . "#+title: entrepe")
  (rear-context-string)
