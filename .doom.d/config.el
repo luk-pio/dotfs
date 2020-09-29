@@ -72,6 +72,7 @@
                       ("@education" . ?e)
                       ("@music" . ?m)
                       ("@professional" . ?p)
+                      ("@personal-dev" . ?d)
                       ("@health" . ?h)
                       ("@car" . ?c)
                       ))
