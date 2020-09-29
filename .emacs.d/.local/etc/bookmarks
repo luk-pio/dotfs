@@ -2,7 +2,47 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("zshrc"
+(("habits"
+ (filename . "~/Dropbox/org/gtd/habits.org")
+ (front-context-string . "TODO Meditation\n")
+ (rear-context-string . "ITLE: Habits\n\n* ")
+ (position . 20))
+("org-capture-last-stored-marker"
+ (filename . "~/Dropbox/org/gtd/projects.org")
+ (front-context-string . "** TODO Implemen")
+ (rear-context-string . "fort:   4\n:END:\n")
+ (position . 3858))
+("next"
+ (filename . "~/Dropbox/org/gtd/next.org")
+ (front-context-string . "#+TITLE: Next\n* ")
+ (rear-context-string)
+ (position . 1))
+("org-refile-last-stored"
+ (filename . "~/Dropbox/org/gtd/waiting.org")
+ (front-context-string . "* TODO [#A] Pass")
+ (rear-context-string . " =>  0:50\n:END:\n")
+ (position . 830))
+("org"
+ (filename . "~/Dropbox/org/")
+ (front-context-string . "roam\n  -rw-r--r-")
+ (rear-context-string . "2K wrz 26 16:08 ")
+ (position . 199))
+("dropbox"
+ (filename . "~/Dropbox/")
+ (front-context-string . "org\n  drwxr-xr-x")
+ (rear-context-string . "0K wrz 15 10:01 ")
+ (position . 161))
+("audioviz"
+ (filename . "~/Workspace/audioviz/")
+ (front-context-string . "data\n  drwxrwxr-")
+ (rear-context-string . "0K wrz  8 11:42 ")
+ (position . 160))
+("tasks"
+ (filename . "~/Dropbox/org/tasks.org")
+ (front-context-string . "]--[2020-09-20 n")
+ (rear-context-string . "-09-20 nie 16:35")
+ (position . 3131))
+("zshrc"
  (filename . "~/dotfs/.zshrc")
  (front-context-string . "# Enable Powerle")
  (rear-context-string)
@@ -13,10 +53,10 @@
  (rear-context-string . "0K wrz 12 10:41 ")
  (position . 265))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/org/roam/20200915104653-python_logging.org")
- (front-context-string . "#+title: python ")
- (rear-context-string)
- (position . 1))
+ (filename . "~/Dropbox/org/gtd/inbox.org")
+ (front-context-string . "* TODO insomnia ")
+ (rear-context-string . " for this task?\n")
+ (position . 438))
 ("aliasrc"
  (filename . "~/dotfs/.config/aliasrc")
  (front-context-string . "export GOPATH=$H")
