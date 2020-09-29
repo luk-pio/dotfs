@@ -18,10 +18,10 @@
  (rear-context-string)
  (position . 1))
 ("org-refile-last-stored"
- (filename . "~/Dropbox/org/gtd/waiting.org")
- (front-context-string . "* TODO [#A] Pass")
- (rear-context-string . " =>  0:50\n:END:\n")
- (position . 830))
+ (filename . "~/Dropbox/org/gtd/projects.org")
+ (front-context-string . "** TODO [#B] wri")
+ (rear-context-string . "  3000 |      |\n")
+ (position . 7062))
 ("org"
  (filename . "~/Dropbox/org/")
  (front-context-string . "roam\n  -rw-r--r-")
@@ -54,9 +54,9 @@
  (position . 265))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/gtd/inbox.org")
- (front-context-string . "* TODO insomnia ")
- (rear-context-string . " for this task?\n")
- (position . 438))
+ (front-context-string . "* TODO Make a wi")
+ (rear-context-string . "inks to zettels\n")
+ (position . 1732))
 ("aliasrc"
  (filename . "~/dotfs/.config/aliasrc")
  (front-context-string . "export GOPATH=$H")

@@ -36,21 +36,20 @@
 
 ;; --------------------- Org Mode ---------------------
 
-  (require 'org-habit)
-  (map! :leader
-        :prefix "n"
-        "c" #'org-capture)
-  (map! :map org-mode-map
-        "M-n" #'outline-next-visible-heading
-        "M-p" #'outline-previous-visible-heading)
-
+(require 'org-habit)
+(map! :leader
+      "C" #'org-capture)
+(map! :map org-mode-map
+      "M-n" #'outline-next-visible-heading
+      "M-p" #'outline-previous-visible-heading)
 (require 'find-lisp)
 
 (setq org-directory "~/Dropbox/org/"
-      org-roam-directory (concat org-directory "roam/")
       jethro/org-agenda-directory (concat org-directory "gtd/")
-      org-agenda-files
-      (find-lisp-find-files jethro/org-agenda-directory "\.org$"))
+      org-agenda-files (find-lisp-find-files jethro/org-agenda-directory "\.org$")
+      org-startup-folded 'overview)
+
+
 
 (setq org-capture-templates
       `(("i" "Inbox" entry (file ,(concat jethro/org-agenda-directory "inbox.org"))
@@ -68,13 +67,14 @@
       '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
         (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)")))
 
-(setq org-tag-alist '(("@life" . ?l)
+;; Tags represent represent Areas (prefixed with @) or interests (prefixed with &) according to the PARA system
+(setq org-tag-alist '(("@family" . ?f)
                       ("@education" . ?e)
                       ("@music" . ?m)
-                      ("@work" . ?w)
+                      ("@professional" . ?p)
                       ("@health" . ?h)
-                      (:newline)
-                      ("CANCELLED" . ?c)))
+                      ("@car" . ?c)
+                      ))
 
 (setq org-refile-use-outline-path 'file
       org-outline-path-complete-in-steps nil)
@@ -241,6 +241,8 @@
 
   (setq org-columns-default-format "%40ITEM(Task) %Effort(EE){:} %CLOCKSUM(Time Spent) %SCHEDULED(Scheduled) %DEADLINE(Deadline)")
 
+;; Show effort estimate in the agenda view
+
 (setq org-agenda-prefix-format '((agenda . " %i %-12:c%?-12t%-6e% s")
                                 (todo . " %i %-12:c %-6e")
                                 (tags . " %i %-12:c")
@@ -270,10 +272,79 @@
 
 ;; Org Roam
 
+( setq org-roam-directory (concat org-directory "roam/") )
+(require 'org-roam-protocol)
 (winner-mode +1)
   (map! :map winner-mode-map
         "<M-right>" #'winner-redo
         "<M-left>" #'winner-undo)
+  (map! :leader
+        :prefix "n"
+        :desc "org-roam" "l" #'org-roam
+        :desc "org-roam-insert" "i" #'org-roam-insert
+        :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
+        :desc "org-roam-find-file" "f" #'org-roam-find-file
+        :desc "org-roam-show-graph" "g" #'org-roam-show-graph
+        :desc "org-roam-capture" "c" #'org-roam-capture)
+
+(setq org-roam-tag-sources '(prop last-directory))
+
+(setq org-roam-capture-templates
+        '(("r" "read" plain (function org-roam--capture-get-point)
+           "%?"
+           :file-name "src/read/${slug}"
+           :head "#+title: ${title}\n
+#+roam_alias: \n
+#+roam_tags: \n
+- links ::
+* ${title}\n
+- source :: ${ref}\n
+"
+           :unnarrowed t)
+          ("w" "web" plain (function org-roam--capture-get-point)
+           "%?"
+           :file-name "src/web/${slug}"
+           :head "#+title: ${title}\n
+#+roam_alias: \n
+#+roam_tags: \n
+- links ::
+* ${title}\n
+- source :: ${ref}\n
+"
+           :unnarrowed t)
+          ("m" "media" plain (function org-roam--capture-get-point)
+           "%?"
+           :file-name "src/media/${slug}"
+           :head "#+title: ${title}\n
+#+roam_alias: \n
+#+roam_tags: \n
+- links ::
+* ${title}\n
+- source :: ${ref}\n
+"
+           :unnarrowed t)
+          ("c" "concept" plain (function org-roam--capture-get-point)
+           "%?"
+           :file-name "${slug}"
+           :head "#+title: ${title}\n
+#+roam_alias: \n
+#+roam_tags: \n
+- links ::
+* ${title}"
+           :unnarrowed t)))
+  (setq org-roam-capture-ref-templates
+        '(("r" "ref" plain (function org-roam-capture--get-point)
+           "%?"
+           :file-name "lit/${slug}"
+           :head "#+setupfile:./hugo_setup.org
+#+title: ${title}
+#+roam_key: ${ref}
+#+roam_tags: website
+- links ::
+* ${title}
+- source :: ${ref}
+"
+           :unnarrowed t)))
 
 ;; Org Pomodoro
 ;; TODO add hook to send notification to mobile when break ends
@@ -301,6 +372,24 @@
   (lambda () (ace-window-display-mode 1)))
 
 (ace-window-display-mode-global 1)
+
+;; delete current file and buffer
+
+(defun delete-file-and-buffer ()
+  "Kill the current buffer and deletes the file it is visiting."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (if filename
+        (if (y-or-n-p (concat "Do you really want to delete file " filename " ?"))
+            (progn
+              (delete-file filename)
+              (message "Deleted file %s." filename)
+              (kill-buffer)))
+      (message "Not a file visiting buffer!"))))
+
+(map! :leader
+        :prefix "b"
+        :desc "delete-file-and-buffer" "D" #'delete-file-and-buffer)
 
 ;; --------------------- CUSTOM KEYMAP ---------------------------
 
