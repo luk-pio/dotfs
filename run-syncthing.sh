@@ -2,4 +2,4 @@
 set -euo pipefail
 
 
-docker run -e STGUIADDRESS= --network=host -v /wherever/st-sync:/var/syncthing syncthing/syncthing:latest
+docker run -e STGUIADDRESS= --network=host -v $HOME/Dropbox/onyx:/var/syncthing syncthing/syncthing:latest

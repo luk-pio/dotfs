@@ -2,7 +2,32 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("habits"
+(("projects"
+ (filename . "~/Dropbox/org/gtd/projects.org")
+ (front-context-string . "#+TITLE: Project")
+ (rear-context-string)
+ (position . 1))
+("maybe_someday"
+ (filename . "~/Dropbox/org/gtd/maybe_someday.org")
+ (front-context-string . "#+TITLE: Maybe_s")
+ (rear-context-string)
+ (position . 1))
+("discrete_fourier_transform.py"
+ (filename . "~/Workspace/programming_practice/")
+ (front-context-string)
+ (rear-context-string . "ilable 76.1 GiB\n")
+ (position . 93))
+("onyx"
+ (filename . "~/Dropbox/onyx/")
+ (front-context-string)
+ (rear-context-string . "0K wrz 12 10:41 ")
+ (position . 244))
+("gtd"
+ (filename . "~/Dropbox/org/gtd/")
+ (front-context-string . "weekly_trigger_l")
+ (rear-context-string . "6K paź  4 10:00 ")
+ (position . 750))
+("habits"
  (filename . "~/Dropbox/org/gtd/habits.org")
  (front-context-string . "TODO Meditation\n")
  (rear-context-string . "ITLE: Habits\n\n* ")
@@ -18,10 +43,10 @@
  (rear-context-string)
  (position . 1))
 ("org-refile-last-stored"
- (filename . "~/Dropbox/org/gtd/projects.org")
- (front-context-string . "** TODO [#B] wri")
- (rear-context-string . "  3000 |      |\n")
- (position . 7062))
+ (filename . "~/Dropbox/org/gtd/next.org")
+ (front-context-string . "* TODO [#C] Doom")
+ (rear-context-string . " for this task?\n")
+ (position . 633))
 ("org"
  (filename . "~/Dropbox/org/")
  (front-context-string . "roam\n  -rw-r--r-")
@@ -47,16 +72,11 @@
  (front-context-string . "# Enable Powerle")
  (rear-context-string)
  (position . 1))
-("syncthing"
- (filename . "/wherever/st-sync/")
- (front-context-string)
- (rear-context-string . "0K wrz 12 10:41 ")
- (position . 265))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/gtd/inbox.org")
- (front-context-string . "* TODO Make a wi")
- (rear-context-string . "inks to zettels\n")
- (position . 1732))
+ (front-context-string . "* TODO microsoft")
+ (rear-context-string . " for this task?\n")
+ (position . 3464))
 ("aliasrc"
  (filename . "~/dotfs/.config/aliasrc")
  (front-context-string . "export GOPATH=$H")

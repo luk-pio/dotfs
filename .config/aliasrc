@@ -1,13 +1,21 @@
 export GOPATH=$HOME/go
 export PATH=$PATH:$HOME/.local/bin:/usr/local/bin/custom:/usr/local/go/bin:$GOPATH/bin
 
-export em="emacs -nw"
+export em="emacsclient -t"
+export editor=$em
+
 alias em=$em
+
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias r=ranger
+
+alias sem="sudo emacsclient -t"
+alias emg="emacsclient -c -a emacs"
+
 alias aliasrc="$editor $HOME/.config/aliasrc"
 alias vimrc="$editor $HOME/.vimrc"
 alias zshrc="$editor $HOME/.zshrc"
+
 alias i="sudo apt install"
 alias u="sudo apt remove"
 

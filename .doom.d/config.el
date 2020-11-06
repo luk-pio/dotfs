@@ -34,6 +34,20 @@
 
 (setq doom-theme 'doom-one)
 
+
+;; --------------------- Vterm keybindings ------------
+(evil-define-key 'normal vterm-mode-map "h" 'vterm-send-left)
+(evil-define-key 'normal vterm-mode-map "l" 'vterm-send-right)
+(evil-define-key 'normal vterm-mode-map "b" 'vterm-send-M-b)
+(evil-define-key 'normal vterm-mode-map "e" 'vterm-send-M-f)
+(evil-define-key 'normal vterm-mode-map "db" 'vterm-send-C-w)
+(evil-define-key 'normal vterm-mode-map "de" 'vterm-send-M-d)
+(evil-define-key 'normal vterm-mode-map "p" 'vterm-yank)
+(evil-define-key 'normal vterm-mode-map "P" '(lambda ()
+                                               (interactive)
+                                               (vterm-send-C-b)
+                                               (vterm-yank)))
+(evil-define-key 'visual vterm-mode-map "d" 'vterm-send-M-w)
 ;; --------------------- Org Mode ---------------------
 
 (require 'org-habit)
@@ -49,8 +63,6 @@
       org-agenda-files (find-lisp-find-files jethro/org-agenda-directory "\.org$")
       org-startup-folded 'overview)
 
-
-
 (setq org-capture-templates
       `(("i" "Inbox" entry (file ,(concat jethro/org-agenda-directory "inbox.org"))
          ,(concat "* TODO %?\n"
@@ -65,7 +77,7 @@
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-        (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)")))
+        (sequence "WAITING(w!)" "HOLD(h!)" "|" "CANCELLED(c!)")))
 
 ;; Tags represent represent Areas (prefixed with @) or interests (prefixed with &) according to the PARA system
 (setq org-tag-alist '(("@family" . ?f)
@@ -95,8 +107,7 @@
 (defun jethro/org-archive-cancelled-tasks ()
   "Archive all cancelled tasks."
   (interactive)
-  (org-map-entries 'org-archive-subtree "CANCELLED" 'file))
-
+  (org-map-entries 'org-archive-subtree "/CANCELLED" 'file))
 
 (defun custom/org-agenda-bulk-mark-regexp-category (regexp)
   "Mark entries whose category matches REGEXP for future agenda bulk action."
@@ -252,7 +263,7 @@
   (setq org-agenda-custom-commands `((" " "Agenda"
                                       ((agenda ""
                                                ((org-agenda-span 'week)
-                                                (org-deadline-warning-days 365)))
+                                                (org-deadline-warning-days 14)))
                                        (todo "TODO"
                                              ((org-agenda-overriding-header "Inbox")
                                               (org-agenda-files '(,(concat jethro/org-agenda-directory "inbox.org")))))
@@ -269,7 +280,13 @@
                                        (todo "TODO"
                                              ((org-agenda-overriding-header "One-off Tasks")
                                               (org-agenda-files '(,(concat jethro/org-agenda-directory "next.org")))
-                                              (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline 'scheduled)))))))))
+                                              (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline 'scheduled))))
+                                       (todo "TODO"
+                                             ((org-agenda-overriding-header "Habits")
+                                              (org-agenda-files '(,(concat jethro/org-agenda-directory "habits.org")))
+                                              (org-agenda-skip-function '(org-agenda-skip-entry-if 'deadline 'scheduled))))
+
+                                      )))))
 
 ;; Org Roam
 
@@ -290,6 +307,7 @@
 
 (setq org-roam-tag-sources '(prop last-directory))
 
+;; TODO template the main string
 (setq org-roam-capture-templates
         '(("r" "read" plain (function org-roam--capture-get-point)
            "%?"
@@ -297,10 +315,9 @@
            :head "#+title: ${title}\n
 #+roam_alias: \n
 #+roam_tags: \n
-- links ::
 * ${title}\n
 - source :: ${ref}\n
-"
+- links :: "
            :unnarrowed t)
           ("w" "web" plain (function org-roam--capture-get-point)
            "%?"
@@ -308,10 +325,9 @@
            :head "#+title: ${title}\n
 #+roam_alias: \n
 #+roam_tags: \n
-- links ::
 * ${title}\n
 - source :: ${ref}\n
-"
+- links :: "
            :unnarrowed t)
           ("m" "media" plain (function org-roam--capture-get-point)
            "%?"
@@ -319,10 +335,9 @@
            :head "#+title: ${title}\n
 #+roam_alias: \n
 #+roam_tags: \n
-- links ::
 * ${title}\n
 - source :: ${ref}\n
-"
+- links :: "
            :unnarrowed t)
           ("c" "concept" plain (function org-roam--capture-get-point)
            "%?"
@@ -330,22 +345,41 @@
            :head "#+title: ${title}\n
 #+roam_alias: \n
 #+roam_tags: \n
-- links ::
-* ${title}"
+* ${title}
+- links :: "
            :unnarrowed t)))
   (setq org-roam-capture-ref-templates
         '(("r" "ref" plain (function org-roam-capture--get-point)
            "%?"
-           :file-name "lit/${slug}"
-           :head "#+setupfile:./hugo_setup.org
-#+title: ${title}
+           :file-name "src/web/${slug}"
+           :head "#+title: ${title}
 #+roam_key: ${ref}
 #+roam_tags: website
-- links ::
 * ${title}
 - source :: ${ref}
-"
+- links :: "
            :unnarrowed t)))
+
+;; Org server
+
+(use-package org-roam-server
+  :ensure t
+  :config
+  (setq org-roam-server-host "127.0.0.1"
+        org-roam-server-port 8080
+        org-roam-server-authenticate nil
+        org-roam-server-export-inline-images t
+        org-roam-server-serve-files nil
+        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+        org-roam-server-network-poll t
+        org-roam-server-network-arrows nil
+        org-roam-server-network-label-truncate t
+        org-roam-server-network-label-truncate-length 60
+        org-roam-server-network-label-wrap-length 20))
+
+;; Org Flashcards org-fc
+
+(setq org-fc-directories org-roam-directory)
 
 ;; Org Pomodoro
 ;; TODO add hook to send notification to mobile when break ends
@@ -353,7 +387,6 @@
 (setq org-pomodoro-length 50)
 (setq org-pomodoro-short-break-length 10)
 (setq org-pomodoro-long-break-length 10)
-
 
 ;; --------------------- Misc ---------------------
 
@@ -391,6 +424,8 @@
 (map! :leader
         :prefix "b"
         :desc "delete-file-and-buffer" "D" #'delete-file-and-buffer)
+
+(setq auto-save-visited-mode t)
 
 ;; --------------------- CUSTOM KEYMAP ---------------------------
 

@@ -1,1 +1,3 @@
 #define desktop_wallpaper  /home/l/Pictures/Wallpapers/background.png
+
+i3-wm.gaps.inner.size: 60

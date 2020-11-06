@@ -54,11 +54,14 @@ if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 	ln -s -b "$DOTFS/.doom.d/packages.el" "$HOME/.doom.d/packages.el"
 	ln -s -b "$DOTFS/.doom.d/init.el" "$HOME/.doom.d/init.el"
 	ln -s -b "$DOTFS/.emacs.d/.local/etc/bookmarks" "$HOME/.emacs.d/.local/etc/bookmarks"
-	ln -s -b "$DOTFS/.config/regolith/Xresources" "$HOME/.config/regolith/Xresources"
 	mkdir -p "$HOME/.config/systemd/user/"
-	cp emacs.service "$HOME/.config/systemd/user/emacs.service"
-	systemctl enable --user emacs
-	systemctl start --user emacs
+
+	ln -s -b "$DOTFS/emacs.service" "$HOME/.config/systemd/user/emacs.service"
+	systemctl --user daemon-reload
+	systemctl --user enable emacs
+	systemctl --user start emacs
+
+	ln -s -b "$DOTFS/doom.desktop" "$HOME/.local/share/applications/doom.desktop"
 	cd "$CWD"
 fi
 
@@ -123,11 +126,12 @@ fi
 
 ## i3
 echo
-PROMPT="Do you want to copy i3 config? [y/n] "
+PROMPT="Do you want to copy regolith config? [y/n] "
 read -p "$PROMPT" ANSWER
 if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 	cd "$CWD"
 	ln -s -b "$DOTFS/.config/regolith/i3/config" "$HOME/.config/regolith/i3/config"
+	ln -s -b "$DOTFS/.config/regolith/Xresources" "$HOME/.config/regolith/Xresources"
 fi
 
 echo

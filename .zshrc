@@ -23,6 +23,7 @@ python
 zsh-autosuggestions
 zsh-syntax-highlighting
 virtualenvwrapper
+zsh-z
 )
 
 source $ZSH/oh-my-zsh.sh
