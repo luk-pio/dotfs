@@ -52,3 +52,5 @@
   :recipe (:host github :repo "org-roam/org-roam-server"))
 (use-package org-pdftools
   :hook (org-mode . org-pdftools-setup-link))
+
+(package! mixed-pitch)

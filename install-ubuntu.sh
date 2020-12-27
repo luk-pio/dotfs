@@ -132,6 +132,7 @@ if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
 	cd "$CWD"
 	ln -s -b "$DOTFS/.config/regolith/i3/config" "$HOME/.config/regolith/i3/config"
 	ln -s -b "$DOTFS/.config/regolith/Xresources" "$HOME/.config/regolith/Xresources"
+	ln -s -b "$DOTFS/.config/regolith/i3xrocks" "$HOME/.config/regolith/i3xrocks"
 fi
 
 echo

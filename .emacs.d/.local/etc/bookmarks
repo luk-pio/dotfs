@@ -2,7 +2,12 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("projects"
+(("xresourcwes"
+ (filename . "~/dotfs/.config/regolith/Xresources")
+ (front-context-string)
+ (rear-context-string . "inner.size: 60\n\n")
+ (position . 99))
+("projects"
  (filename . "~/Dropbox/org/gtd/projects.org")
  (front-context-string . "#+TITLE: Project")
  (rear-context-string)
@@ -43,10 +48,10 @@
  (rear-context-string)
  (position . 1))
 ("org-refile-last-stored"
- (filename . "~/Dropbox/org/gtd/next.org")
- (front-context-string . "* TODO [#C] Doom")
+ (filename . "~/Dropbox/org/gtd/maybe_someday.org")
+ (front-context-string . "* TODO [#C] gene")
  (rear-context-string . " for this task?\n")
- (position . 633))
+ (position . 26141))
 ("org"
  (filename . "~/Dropbox/org/")
  (front-context-string . "roam\n  -rw-r--r-")
@@ -74,9 +79,9 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/gtd/inbox.org")
- (front-context-string . "* TODO microsoft")
+ (front-context-string . "* TODO generativ")
  (rear-context-string . " for this task?\n")
- (position . 3464))
+ (position . 555))
 ("aliasrc"
  (filename . "~/dotfs/.config/aliasrc")
  (front-context-string . "export GOPATH=$H")

@@ -38,10 +38,15 @@ packadd! matchit
 set easymotion
 set surround
 set commentary
+set ReplaceWithRegister
+set argtextobject
+set exchange
+set highlightedyank
+set multiple-cursors
 
-nmap <leader><leader>s :action KJumpAction<cr>
-nmap <leader><leader>w :action KJumpAction.Word0<cr>
-nmap <leader><leader>l :action KJumpAction.1<cr>
+" nmap <leader><leader>s :action KJumpAction<cr>
+" nmap <leader><leader>w :action KJumpAction.Word0<cr>
+" nmap <leader><leader>l :action KJumpAction.1<cr>
 
 nnoremap zC :action CollapseRegionRecursively<CR>
 nnoremap zO :action ExpandRegionRecursively<CR>

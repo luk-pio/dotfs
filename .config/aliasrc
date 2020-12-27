@@ -1,23 +1,29 @@
-export GOPATH=$HOME/go
-export PATH=$PATH:$HOME/.local/bin:/usr/local/bin/custom:/usr/local/go/bin:$GOPATH/bin
-
+# Editor
 export em="emacsclient -t"
-export editor=$em
+export VISUAL=em
+export EDITOR=em
 
 alias em=$em
-
-alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-alias r=ranger
-
 alias sem="sudo emacsclient -t"
 alias emg="emacsclient -c -a emacs"
 
+# File
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias r=ranger
+export FILE=ranger
+
+# Config file quickaccess
 alias aliasrc="$editor $HOME/.config/aliasrc"
 alias vimrc="$editor $HOME/.vimrc"
 alias zshrc="$editor $HOME/.zshrc"
 
+# Misc aliases
 alias i="sudo apt install"
 alias u="sudo apt remove"
+alias fzf="fzf --height 40% --reverse"
+function mkd() {
+	mkdir -p "$@" && cd "$_";
+}
 
 # Virtualenvwrapper things
 export WORKON_HOME=$HOME/.virtualenvs
@@ -26,11 +32,9 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV="$HOME/.local/bin/virtualenv"
 source "$HOME/.local/bin/virtualenvwrapper.sh"
 
-
-# User defined variables                                              
-export FILE=ranger
-export VISUAL=emacs
-export EDITOR=emacs
+# Go
+export GOPATH=$HOME/go
+export PATH=$PATH:$HOME/.local/bin:/usr/local/bin/custom:/usr/local/go/bin:$GOPATH/bin
 
 # Work
 alias a%cdsp='~/PycharmProjects/CDSP'
@@ -39,6 +43,3 @@ alias restart-cdsp='source $HOME/Workspace/cdsp-restart.sh'
 alias a%api='~/PycharmProjects/CDSP/cdsp-api'
 alias a%config='~/Workspace/configs/'
 
-function mkd() {
-	mkdir -p "$@" && cd "$_";
-}

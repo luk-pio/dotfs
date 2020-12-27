@@ -27,35 +27,14 @@
 
 ;; --------------------- Appearance ---------------------
 
-(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 15)
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 15 :weight 'light)
       doom-variable-pitch-font (font-spec :family "Libre Baskerville")
       doom-serif-font (font-spec :family "Libre Baskerville")
       )
 
-(setq doom-theme 'doom-tomorrow-night)
+(setq doom-theme 'doom-one)
 
-;; --------------------- Vterm keybindings ------------
-(evil-define-key 'normal vterm-mode-map "h" 'vterm-send-left)
-(evil-define-key 'normal vterm-mode-map "l" 'vterm-send-right)
-(evil-define-key 'normal vterm-mode-map "b" 'vterm-send-M-b)
-(evil-define-key 'normal vterm-mode-map "e" 'vterm-send-M-f)
-(evil-define-key 'normal vterm-mode-map "db" 'vterm-send-C-w)
-(evil-define-key 'normal vterm-mode-map "de" 'vterm-send-M-d)
-(evil-define-key 'normal vterm-mode-map "p" 'vterm-yank)
-(evil-define-key 'normal vterm-mode-map "P" '(lambda ()
-                                               (interactive)
-                                               (vterm-send-C-b)
-                                               (vterm-yank)))
-(evil-define-key 'visual vterm-mode-map "d" 'vterm-send-M-w)
 ;; --------------------- Org Mode ---------------------
-
-(add-to-list 'load-path "~/.emacs.d/habitrpg/habitrpg")
-(require 'habitrpg)
-(setq habitrpg-api-user "ac7bc572-4a83-4e3f-ba89-42cb95edb474")
-(setq habitrpg-api-token "5aed1d8a-84ce-4eb9-8edd-09ceab0ae91e")
-(global-set-key (kbd "C-c C-x h") 'habitrpg-add)
-(global-set-key (kbd "<f9> a") 'habitrpg-status)
-(add-hook 'org-after-todo-state-change-hook 'habitrpg-add 'append)
 
 (require 'org-habit)
 (map! :leader
@@ -67,6 +46,7 @@
 
 (setq org-directory "~/Dropbox/org/"
       jethro/org-agenda-directory (concat org-directory "gtd/")
+      org-noter-notes-search-path (concat org-directory "notes/")
       org-agenda-files (find-lisp-find-files jethro/org-agenda-directory "\.org$")
       org-startup-folded 'overview)
 
@@ -84,17 +64,16 @@
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-        (sequence "WAITING(w!)" "HOLD(h!)" "|" "CANCELLED(c!)")))
+        (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)")))
 
 ;; Tags represent represent Areas (prefixed with @) or interests (prefixed with &) according to the PARA system
-(setq org-tag-alist '(("@social" . ?s)
-                      ("@work" . ?w)
+(setq org-tag-alist '(("@family" . ?f)
+                      ("@education" . ?e)
                       ("@music" . ?m)
-                      ("@fitness&health" . ?f)
-                      ("@learning" . ?l)
-                      ("@hrpghabit" . ?a)
-                      ("@hrpgdaily" . ?d)
-                      ("@hrpgreward" . ?g)
+                      ("@professional" . ?p)
+                      ("@personal-dev" . ?d)
+                      ("@health" . ?h)
+                      ("@car" . ?c)
                       ))
 
 (setq org-refile-use-outline-path 'file
@@ -115,7 +94,7 @@
 (defun jethro/org-archive-cancelled-tasks ()
   "Archive all cancelled tasks."
   (interactive)
-  (org-map-entries 'org-archive-subtree "/CANCELLED" 'file))
+  (org-map-entries 'org-archive-subtree "CANCELLED" 'file))
 
 (defun custom/org-agenda-bulk-mark-regexp-category (regexp)
   "Mark entries whose category matches REGEXP for future agenda bulk action."
@@ -311,8 +290,7 @@
         :desc "org-roam-switch-to-buffer" "b" #'org-roam-switch-to-buffer
         :desc "org-roam-find-file" "f" #'org-roam-find-file
         :desc "org-roam-show-graph" "g" #'org-roam-show-graph
-        :desc "org-roam-capture" "c" #'org-roam-capture
-        :desc "org-roam-deactivate-buffer" "d" #'org-roam-buffer-toggle-display)
+        :desc "org-roam-capture" "c" #'org-roam-capture)
 
 (setq org-roam-tag-sources '(prop last-directory))
 
