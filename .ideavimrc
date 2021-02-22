@@ -39,7 +39,7 @@ set easymotion
 set surround
 set commentary
 set ReplaceWithRegister
-set argtextobject
+set argtextobj
 set exchange
 set highlightedyank
 set multiple-cursors

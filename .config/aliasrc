@@ -24,6 +24,9 @@ alias fzf="fzf --height 40% --reverse"
 function mkd() {
 	mkdir -p "$@" && cd "$_";
 }
+alias ops='eval $(op signin my)'
+
+
 
 # Virtualenvwrapper things
 export WORKON_HOME=$HOME/.virtualenvs

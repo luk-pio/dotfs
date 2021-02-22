@@ -2,7 +2,17 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("xresourcwes"
+(("aug proj"
+ (filename . "~/Workspace/programming_practice/aug/lex/project/")
+ (front-context-string . "sql.tab.c\n  -rw-")
+ (rear-context-string . "1K lut  1 23:37 ")
+ (position . 416))
+("Main.org"
+ (filename . "~/Workspace/Engineering-Thesis/paper/Main.org")
+ (front-context-string . "rk\n*** Conclusio")
+ (rear-context-string . "ns for future wo")
+ (position . 4858))
+("xresourcwes"
  (filename . "~/dotfs/.config/regolith/Xresources")
  (front-context-string)
  (rear-context-string . "inner.size: 60\n\n")
@@ -48,10 +58,10 @@
  (rear-context-string)
  (position . 1))
 ("org-refile-last-stored"
- (filename . "~/Dropbox/org/gtd/maybe_someday.org")
- (front-context-string . "* TODO [#C] gene")
+ (filename . "~/Dropbox/org/gtd/next.org")
+ (front-context-string . "* TODO [#A] Shor")
  (rear-context-string . " for this task?\n")
- (position . 26141))
+ (position . 4884))
 ("org"
  (filename . "~/Dropbox/org/")
  (front-context-string . "roam\n  -rw-r--r-")
@@ -79,9 +89,9 @@
  (position . 1))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/org/gtd/inbox.org")
- (front-context-string . "* TODO generativ")
+ (front-context-string . "* TODO Shorten s")
  (rear-context-string . " for this task?\n")
- (position . 555))
+ (position . 1713))
 ("aliasrc"
  (filename . "~/dotfs/.config/aliasrc")
  (front-context-string . "export GOPATH=$H")
@@ -113,9 +123,10 @@
  (rear-context-string . "init.el\"\n	mkdir ")
  (position . 1301))
 ("Thesis"
- (treemacs-bookmark-path . #1="/home/l/Workspace/Engineering-Thesis")
- (handler . treemacs--bookmark-handler)
- (filename . #1#))
+ (filename . "~/Workspace/Engineering-Thesis/")
+ (front-context-string . "Main.org\n  -rw-r")
+ (rear-context-string . "8K sty 19 15:57 ")
+ (position . 476))
 ("Downloads"
  (filename . "~/Downloads/")
  (front-context-string . "install-tl-20200")
