@@ -1,7 +1,7 @@
 # Editor
 export em="emacsclient -t"
-export VISUAL=em
-export EDITOR=em
+export VISUAL=vim
+export EDITOR=vim
 
 alias em=$em
 alias sem="sudo emacsclient -t"

@@ -6,10 +6,11 @@ echo
 PROMPT="Do you want to set up git and ssh keys? [y/n] "
 read -p "$PROMPT" ANSWER
 if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
-	read -p "Input your github email: " EMAIL
-	read -p "Input your github username: " GH_USER
+	read -p "Github email: " EMAIL
+	read -p "Github username: " GH_USER
 	sudo apt install -y git curl
 	# This is used when using 2fa with https to store the access token
+	touch ~/.git-credentials
 	git config --global credentials.helper store
 	git config --global user.name "$GH_USER"
 	git config --global user.email $EMAIL
