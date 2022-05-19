@@ -1,0 +1,16 @@
+[user]
+	name = LukaszPiotrakArdigen
+	email = lukasz.piotrak@ardigen.com
+[core]
+	autocrlf = input
+[init]
+	defaultBranch = main
+[credential]
+	helper = cache
+[alias]
+fza = "!git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o git add"
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

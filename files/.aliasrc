@@ -1,0 +1,26 @@
+# Editor
+export VISUAL=vim
+export EDITOR=vim
+
+# File
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias r=ranger
+export FILE=ranger
+
+# Config file quickaccess
+alias aliasrc="$editor $HOME/.aliasrc"
+alias vimrc="$editor $HOME/.vimrc"
+alias zshrc="$editor $HOME/.zshrc"
+
+# Misc aliases
+alias i="sudo apt install"
+alias u="sudo apt remove"
+alias fzf="fzf --height 40% --reverse"
+function mkd() {
+	mkdir -p "$@" && cd "$_";
+}
+alias ops='eval $(op signin my)'
+
+# Docker
+alias docker-stop-all='docker stop $(docker ps -q)'
+
