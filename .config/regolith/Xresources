@@ -1,7 +1,0 @@
-#define desktop_wallpaper  /home/l/Pictures/Wallpapers/background.png
-
-i3-wm.gaps.inner.size: 30
-
-
-i3-wm.program.1: copyq
-i3-wm.program.2: /home/l/dotfs/scripts/disable_fn_solaar.sh 2>&1 > /home/l/dotfs/scripts/disable_fn_solaar.log
