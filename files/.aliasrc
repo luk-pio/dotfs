@@ -13,8 +13,8 @@ alias vimrc="$editor $HOME/.vimrc"
 alias zshrc="$editor $HOME/.zshrc"
 
 # Misc aliases
-alias i="sudo apt install"
-alias u="sudo apt remove"
+alias i="brew install"
+alias u="brew uninstall"
 alias fzf="fzf --height 40% --reverse"
 function mkd() {
 	mkdir -p "$@" && cd "$_";
