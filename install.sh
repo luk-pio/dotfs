@@ -87,3 +87,8 @@ symlink_confirm_overwrite .ideavimrc
 
 do_if_confirmation "Do you want to Download Hack font?" 'curl "https://raw.githubusercontent.com/pyrho/hack-font-ligature-nerd-font/master/font/Hack%20Regular%20Nerd%20Font%20Complete%20Mono.ttf" Hack_Regular_Nerd_Font_Mono.ttf'
 
+do_if_confirmation "Do you want to install lazygit?" '
+  brew install lazygit
+	cd "$CWD"
+'
+symlink_confirm_overwrite Library/Application\ Support/lazygit/config.yml
