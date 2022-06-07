@@ -17,10 +17,11 @@ symlink_confirm_overwrite() {
     if [ -f "$HOME/$1" ]; then
       PROMPT="~/$1 already exists. Overwrite? [y/n]"
       read -p "$PROMPT" ANSWER
-      if [ -z "$ANSWER" ] || [ "$ANSWER" == "y" ]; then
-        ln -s -f "$DOTFS/files/$1" "$HOME/$1"
+      if [ -z "$ANSWER" ] || [ "$ANSWER" != "y" ]; then
+        return 0
       fi
     fi
+    ln -s -f "$DOTFS/files/$1" "$HOME/$1"
   fi 
 }
 
