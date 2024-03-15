@@ -9,7 +9,7 @@ map <C-n> :NERDTreeToggle<CR>
 
 syntax enable " enable syntax processing
 set background=dark
-colorscheme peachpuff
+" colorscheme peachpuff
 set encoding=utf-8
 
 " TABS
