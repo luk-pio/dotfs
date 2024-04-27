@@ -1,7 +1,11 @@
-. $HOME/.config/zsh/p10k.sh
+source $HOME/.config/zsh/p10k.sh
+source $ZSH/oh-my-zsh.sh
+source $HOME/.config/zsh/alias.sh
+source $HOME/.config/zsh/vi-mode.sh
+source $HOME/.config/zsh/env.sh
+source $HOME/.config/zsh/fzf.sh
+source $HOME/.config/zsh/amzn.sh
 
-# Load aliases
-[ -f "$HOME/.aliasrc" ] && source "$HOME/.aliasrc"
 
 plugins=(
     git
@@ -13,10 +17,8 @@ plugins=(
     zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
 
 
-. $HOME/.config/zsh/alias.sh
-. $HOME/.config/zsh/vi-mode.sh
-. $HOME/.config/zsh/env.sh
-. $HOME/.config/zsh/fzf.sh
+eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(mise activate zsh)"
+

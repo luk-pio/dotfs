@@ -1,5 +1,7 @@
 #!/bin/zsh
-alias vim=nvim
+# Editor
+export VISUAL=nvim
+export EDITOR=nvim
 
 mcd() {
     mkdir "$@" && cd "${!#}"
@@ -40,3 +42,30 @@ salias() {
 }
 
 alias tf='terraform'
+
+# File
+alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
+alias r=ranger
+export FILE=ranger
+
+# Misc aliases
+alias lg="lazygit"
+alias i="brew install"
+alias u="brew uninstall"
+alias fzf="fzf --height 40% --reverse"
+
+function mkd() {
+	mkdir -p "$@" && cd "$_";
+}
+
+function cfg() {
+  $EDITOR "$HOME/.config/zsh/$@.sh"
+}
+
+alias ops='eval $(op signin my)'
+
+# Docker
+alias docker-stop-all='docker stop $(docker ps -q)'
+
+alias vim=nvim
+

@@ -1,7 +1,7 @@
 #!/bin/zsh
 # PATH
 
-PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/.local/bin:$HOME/.local/share/mise/installs:$HOME/.toolbox/bin:$PATH"
 
 # OpenAI
 export OPENAI_API_KEY=
