@@ -28,9 +28,9 @@ function nltermx() {
     fi
 }
 
-salias() {
+aliasadd() {
     if [ $# -ne 2 ]; then
-        echo "Usage: salias alias_name 'command'"
+        echo "Usage: aliasadd alias_name 'command'"
         return 1
     fi
 
@@ -44,8 +44,7 @@ salias() {
 alias tf='terraform'
 
 # File
-alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-alias r=ranger
+alias ranger='yatzi'
 export FILE=ranger
 
 # Misc aliases
