@@ -68,3 +68,5 @@ alias docker-stop-all='docker stop $(docker ps -q)'
 
 alias vim=nvim
 
+alias s='sesh connect $(sesh list | fzf)'
+
