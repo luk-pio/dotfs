@@ -4,7 +4,7 @@ export VISUAL=nvim
 export EDITOR=nvim
 
 mcd() {
-    mkdir "$@" && cd "${!#}"
+    mkdir -p "$@" && cd "${!#}"
 }
 
 function nltermx() {
@@ -67,6 +67,7 @@ alias ops='eval $(op signin my)'
 alias docker-stop-all='docker stop $(docker ps -q)'
 
 alias vim=nvim
+alias v=nvim
 
 alias s='sesh connect $(sesh list | fzf)'
 
