@@ -1,5 +1,5 @@
 export ZSH=$HOME/.oh-my-zsh
-export ZSH_THEME="powerlevel10k/powerlevel10k"
+export ZSH_THEME="edvardm"
 
 plugins=(
     git
@@ -12,7 +12,6 @@ plugins=(
     zsh-fzf-history-search
 )
 
-source $HOME/.config/zsh/p10k.sh
 source $ZSH/oh-my-zsh.sh
 
 source $HOME/.config/zsh/alias.sh
