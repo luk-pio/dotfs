@@ -1,6 +1,3 @@
-amzn.sh
-**/cr*
-files/.ssh
-files/.gitconfig
+files/.config/amzn
 .DS_STORE
 

@@ -1,6 +1,4 @@
 #!/bin/zsh
-
-
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -9,4 +7,4 @@ compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
+complete -C '/usr/local/bin/aws_completer' aws
