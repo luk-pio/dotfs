@@ -32,5 +32,4 @@ alias vim="nvim"
 alias v="nvim"
 
 alias s='sesh connect $(sesh list | fzf)'
-alias sed=gsed
 

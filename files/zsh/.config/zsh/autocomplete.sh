@@ -7,4 +7,3 @@ compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 autoload -U +X bashcompinit && bashcompinit
-complete -C '/usr/local/bin/aws_completer' aws

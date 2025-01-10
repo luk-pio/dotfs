@@ -1,5 +1,0 @@
-{
-    "InstanceId": "i-00d2f5fd3a696d1d1",
-    "PasswordData": "up*mZ1wlJtRYsbt&XR5Q3tFtPt4Mlh*;",
-    "Timestamp": "2025-01-10T13:20:38+00:00"
-}

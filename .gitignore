@@ -1,3 +1,4 @@
-files/.config/amzn
+files/zsh/.config/zsh/amzn
+files/ssh/.ssh/config
 .DS_STORE
 
