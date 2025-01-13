@@ -30,8 +30,6 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
   git clone https://github.com/marlonrichert/zsh-autocomplete.git \
     ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autocomplete
-  git clone https://github.com/jeffreytse/zsh-vi-mode \
-    ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-vi-mode
   git clone https://github.com/joshskidmore/zsh-fzf-history-search \
     ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-fzf-history-search
 else
