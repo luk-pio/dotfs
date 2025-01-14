@@ -11,6 +11,7 @@ plugins=(
     zsh-syntax-highlighting
     vi-mode
     zsh-autocomplete
+    zsh-autosuggestions
 )
 
 export ZSH_FZF_HISTORY_SEARCH_DATES_IN_SEARCH=0
