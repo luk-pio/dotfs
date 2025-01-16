@@ -1,3 +1,4 @@
 font-family="Hack Nerd Font Mono"
 theme="Kanagawa Wave"
 macos-titlebar-style="hidden"
+font-thicken=true
