@@ -22,6 +22,14 @@ stow -v --adopt -t $HOME ghostty
 stow -v --adopt -t $HOME claude
 )
 
+# TPM (Tmux Plugin Manager)
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+else
+  echo "~/.tmux/plugins/tpm already exists. Skipping installation."
+fi
+~/.tmux/plugins/tpm/bin/install_plugins
+
 # OMZ
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   RUNZSH='no' KEEP_ZSH='yes' sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
