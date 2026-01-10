@@ -19,6 +19,7 @@ stow -v --adopt -t $HOME tmux
 stow -v --adopt -t $HOME zsh
 stow -v --adopt -t $HOME nvim
 stow -v --adopt -t $HOME ghostty
+stow -v --adopt -t $HOME claude
 )
 
 # OMZ
