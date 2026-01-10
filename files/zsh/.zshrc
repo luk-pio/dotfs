@@ -10,7 +10,7 @@ plugins=(
     python
     zsh-syntax-highlighting
     vi-mode
-    zsh-autocomplete
+    # zsh-autocomplete
     zsh-autosuggestions
 )
 
@@ -22,8 +22,8 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.config/zsh/alias.sh
 source $HOME/.config/zsh/autocomplete.sh
 source $HOME/.config/zsh/env.sh
+source $HOME/.config/zsh/amzn/env.sh
 source $HOME/.config/zsh/fzf.sh
-source $HOME/.config/zsh/amzn/amzn.sh
 
 
 if [ -d "/opt/homebrew/bin/brew" ]; then
@@ -35,5 +35,16 @@ if [ -d "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
 fi
 
 eval "$(zoxide init zsh)"
-eval "$(mise activate zsh)"
 
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# bun completions
+[ -s "/Users/l/.bun/_bun" ] && source "/Users/l/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
