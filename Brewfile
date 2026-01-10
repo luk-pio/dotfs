@@ -1,4 +1,3 @@
-tap "homebrew/bundle"
 tap "joshmedeski/sesh"
 tap "powershell/tap"
 brew "fzf"
@@ -14,3 +13,7 @@ brew "tmux"
 brew "yazi"
 brew "zoxide"
 brew "bat"
+brew "git-delta"
+
+cask "ghostty"
+cask "obsidian"

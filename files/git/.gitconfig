@@ -1,8 +1,9 @@
 [user]
 	name = luk-pio
-	email = luke.piotrak@github.com
+	email = 48261254+luk-pio@users.noreply.github.com
 [core]
 	autocrlf = input
+	pager = delta
 [init]
 	defaultBranch = main
 [credential]
@@ -14,3 +15,13 @@ fza = "!git ls-files -m -o --exclude-standard | fzf --print0 -m | xargs -0 -t -o
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	side-by-side = true
+	line-numbers = true
+[merge]
+	conflictstyle = diff3
+[diff]
+	colorMoved = default
