@@ -74,7 +74,30 @@ dotfs/
 ## Notable Keybindings
 
 ### Tmux (prefix: `Ctrl-Space`)
+
+**Sessions:**
 - `Alt-p` - Session picker (sesh + fzf)
+
+**Splitting panes:**
+- `prefix + v` - Split vertically (left/right, like `:vsplit`)
+- `prefix + s` - Split horizontally (top/bottom, like `:split`)
+
+**Navigating panes:**
+- `prefix + h/j/k/l` - Move left/down/up/right (vim-style)
+
+**Resizing panes:**
+- `prefix + H/J/K/L` - Resize left/down/up/right (repeatable)
+
+**Moving panes:**
+- `prefix + <` - Swap pane with previous
+- `prefix + >` - Swap pane with next
+
+**Other:**
+- Mouse drag to resize panes
+- `prefix + z` - Zoom/unzoom current pane
+- `prefix + x` - Kill current pane
+- `prefix + c` - New window
+- `prefix + n/p` - Next/previous window
 
 ### Zsh
 - Vi-mode enabled
