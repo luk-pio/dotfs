@@ -1,5 +1,6 @@
 tap "joshmedeski/sesh"
 tap "powershell/tap"
+brew "sesh"
 brew "fzf"
 brew "gnu-sed"
 brew "jq"
