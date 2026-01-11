@@ -35,4 +35,4 @@ alias s='sesh connect $(sesh list | fzf)'
 alias cat=bat
 
 # Claude Code in new git worktree
-alias ccwt='f() { git worktree add "../$1" "${2:-$1}" && cd "../$1" && claude; }; f'
+alias ccwt='f() { git worktree add -b "$1" "../$1" "${2:-HEAD}" && cd "../$1" && claude; }; f'
