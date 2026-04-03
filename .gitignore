@@ -1,5 +1,15 @@
+# Old stow-based secrets (kept during migration)
 files/zsh/.config/zsh/amzn
 files/ssh/.ssh/config
+
+# Nix-based secrets
+secrets/
+
+# macOS
 .DS_STORE
 secrets/
+
+# Nix
+result
+.direnv/
 
